@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Building this blog with ChatGPT 5.5 | Nyaro's Blog</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="index.html#home">
+        <span>Nyaro's Blog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="new-page.html">Blog</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <aside class="article-toc is-collapsed" aria-label="Article table of contents">
+        <button class="toc-toggle" type="button" aria-expanded="false" aria-label="Toggle article directory">
+          <span class="toc-label">Contents</span>
+          <span class="toc-dots" aria-hidden="true">
+            <span class="toc-dot toc-dot-large"></span>
+            <span class="toc-dot toc-dot-small"></span>
+            <span class="toc-dot toc-dot-large"></span>
+          </span>
+        </button>
+        <nav class="toc-panel">
+          <a class="toc-item toc-item-large" href="#overview">Overview</a>
+          <a class="toc-item toc-item-small" href="#notes">Design notes</a>
+          <a class="toc-item toc-item-large" href="#next">Next steps</a>
+        </nav>
+      </aside>
+
+      <article class="article-page">
+        <header class="article-header">
+          <a class="back-link" href="new-page.html">Back to Blog</a>
+          <p class="post-meta">AI / Test Log</p>
+          <h1>Building this blog with ChatGPT 5.5</h1>
+          <p class="article-dek">
+            A short record of how this site was shaped, adjusted, and tested with AI.
+          </p>
+        </header>
+
+        <div class="article-body">
+          <p>
+            This is a sample article page. It keeps the same atmosphere as the home page while giving the writing more room to breathe.
+          </p>
+          <p>
+            The page can be used for notes about design decisions, experiments, development logs, or anything that should live as a full article instead of a directory preview.
+          </p>
+          <h2 id="overview">Overview</h2>
+          <p>
+            This section can summarize the article and set up the main idea.
+          </p>
+          <h3 id="notes">Design notes</h3>
+          <p>
+            Use smaller headings for supporting notes, details, or short checkpoints inside a larger section.
+          </p>
+          <h2 id="next">Next steps</h2>
+          <p>
+            Replace this sample text with the real article content. The typography, spacing, navigation, and contact area are already prepared.
+          </p>
+          <figure class="code-card">
+            <figcaption>Example snippet</figcaption>
+            <pre><code>const page = {
+  title: "Building this blog with ChatGPT 5.5",
+  category: "AI / Test Log",
+  status: "draft",
+};
+
+function publish(article) {
+  return `${article.title} is ready.`;
+}</code></pre>
+          </figure>
+        </div>
+      </article>
+    </main>
+
+    <button class="scroll-top-button" type="button" aria-label="Back to top"></button>
+
+    <footer class="site-footer" aria-label="Social and contact links">
+      <div class="footer-inner">
+        <p class="footer-label">Find me</p>
+        <div class="social-actions">
+          <a class="social-button" href="https://www.instagram.com/nyaro0116/" aria-label="Open Instagram profile">
+            <img src="assets/icon-ins.svg" alt="">
+          </a>
+          <a class="social-button" href="https://x.com/Nyaro_Momiji" aria-label="Open X profile">
+            <img src="assets/icon-x.svg" alt="">
+          </a>
+        </div>
+        <p class="email-text">nyaro.email@nyaro.org</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

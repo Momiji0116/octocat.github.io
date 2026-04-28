@@ -63,7 +63,38 @@ const preferredLocales = navigator.languages && navigator.languages.length
   : [navigator.language];
 const greeting = resolveGreeting(preferredLocales);
 const title = document.getElementById("hero-title");
+const localGreeting = document.getElementById("localGreeting");
 
-document.documentElement.lang = normalizeLocale(preferredLocales[0]) || "en";
-document.getElementById("localGreeting").textContent = greeting;
-title.dataset.size = greeting.length > 6 ? "long" : greeting.length > 3 ? "medium" : "short";
+if (title && localGreeting) {
+  document.documentElement.lang = normalizeLocale(preferredLocales[0]) || "en";
+  localGreeting.textContent = greeting;
+  title.dataset.size = greeting.length > 6 ? "long" : greeting.length > 3 ? "medium" : "short";
+}
+
+const articleToc = document.querySelector(".article-toc");
+const tocToggle = document.querySelector(".toc-toggle");
+
+if (articleToc && tocToggle) {
+  tocToggle.addEventListener("click", () => {
+    const isCollapsed = articleToc.classList.toggle("is-collapsed");
+    tocToggle.setAttribute("aria-expanded", String(!isCollapsed));
+  });
+}
+
+const scrollTopButton = document.querySelector(".scroll-top-button");
+
+if (scrollTopButton) {
+  const updateScrollTopButton = () => {
+    scrollTopButton.classList.toggle("is-visible", window.scrollY > 320);
+  };
+
+  scrollTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  updateScrollTopButton();
+  window.addEventListener("scroll", updateScrollTopButton, { passive: true });
+}
