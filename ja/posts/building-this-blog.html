@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ChatGPT 5.5 でこのブログを作った記録 | Nyaro's Blog</title>
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="../index.html#home">
+        <span>Nyaro's Blog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#home">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../index.html#about">About</a>
+      </nav>
+      <details class="language-switcher">
+        <summary>Language</summary>
+        <div class="language-menu">
+          <a href="../../zh/posts/building-this-blog.html">简体中文</a>
+          <a href="../../ja/posts/building-this-blog.html" aria-current="true">日本語</a>
+          <a href="../../en/posts/building-this-blog.html">English</a>
+        </div>
+      </details>
+    </header>
+
+    <main>
+      <aside class="article-toc is-collapsed" aria-label="Article table of contents">
+        <button class="toc-toggle" type="button" aria-expanded="false" aria-label="Toggle article directory">
+          <span class="toc-label">Contents</span>
+          <span class="toc-dots" aria-hidden="true"></span>
+        </button>
+        <nav class="toc-panel" aria-label="Article sections"></nav>
+      </aside>
+
+      <article class="article-page">
+        <header class="article-header">
+          <a class="back-link" href="../blog.html">Back to Blog</a>
+          <p class="post-meta">出来事 / 日常</p>
+          <h1>ChatGPT 5.5 でこのブログを作った記録</h1>
+          <p class="article-dek">
+            これはこのブログの最初の記事です。ChatGPT 5.5 を使ってブログを作った流れと、いくつか面白かった細部を記録します。
+          </p>
+        </header>
+
+        <div class="article-body">
+          <p>
+            この Blog は、ChatGPT 5.5 を使って一日ほどで作りました。これが最初の記事です。ここまで読みに来てくれてうれしいです。
+          </p>
+          <p>
+            使ったツールは ChatGPT 5.5、Codex、Cloudflare DNS、GitHub Pages です。
+          </p>
+
+          <h2 id="cost">費用メモ</h2>
+          <p>
+            Cloudflare のドメイン費用は、初年度で約 7.5 USD でした。
+          </p>
+
+          <h2 id="start">始めてみよう</h2>
+
+          <h3 id="part-html">Part 1：ChatGPT で HTML ページを生成する</h3>
+          <p>
+            ここでは ChatGPT 5.5 を使い、Codex にホームページ、ブログ一覧ページ、記事ページのテンプレートを直接生成してもらいました。その後、自分の希望に合わせてスタイル、インタラクション、ページ構造を調整しました。使ってみた感想として、このモデルは本当に強いです。
+          </p>
+
+          <h3 id="part-domain">Part 2：Cloudflare でドメインを購入する</h3>
+          <p>
+            今回は Cloudflare のドメインサービスを使いました。Aliyun、Tencent、GoDaddy などのサービスでも問題ありません。Cloudflare は比較的安く、nyaro.org の初年度費用は約 7.5 USD、次年度は約 10 USD でした。
+          </p>
+
+          <h3 id="part-github-pages">Part 3：GitHub Pages の URL を取得してコードをアップロードする</h3>
+          <p>
+            GitHub Pages には公式ドキュメントがしっかり用意されているので、ここでは詳しい手順は省略します。参考：
+            <a href="https://docs.github.com/ja/pages/quickstart"><u>GitHub Pages クイックスタート</u></a>
+          </p>
+
+          <h3 id="part-dns">Part 4：DNS を設定する</h3>
+          <p>
+            ドメインを購入したら、Cloudflare DNS に GitHub Pages が要求する DNS レコードを追加します。通常は 4 つの A レコードと 1 つの CNAME レコードを設定します。
+          </p>
+
+          <h4 id="a-records">A レコード</h4>
+          <p>
+            ルートドメインを GitHub Pages の IP アドレスに向けます。
+          </p>
+          <figure class="code-card">
+            <figcaption>Cloudflare DNS / A records</figcaption>
+            <pre><code>@  A  185.199.108.153
+@  A  185.199.109.153
+@  A  185.199.110.153
+@  A  185.199.111.153</code></pre>
+          </figure>
+
+          <h4 id="cname-record">CNAME レコード</h4>
+          <p>
+            www サブドメインを GitHub Pages のアドレス、たとえば username.github.io に向けます。
+          </p>
+          <figure class="code-card">
+            <figcaption>Cloudflare DNS / CNAME record</figcaption>
+            <pre><code>www  CNAME  username.github.io</code></pre>
+          </figure>
+          <p>
+            公式ドキュメントも参考になります：
+            <a href="https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site"><u>GitHub Pages のカスタムドメインを設定する</u></a>
+          </p>
+
+          <h3 id="part-custom-domain">Part 5：GitHub Pages にカスタムドメインを設定する</h3>
+          <p>
+            DNS を設定した後、GitHub Pages 側にもカスタムドメインを登録します。リポジトリの Settings > Pages を開き、Custom domain にドメインを入力して検証を待ちます。
+          </p>
+
+          <h3 id="part-done">Part 6：完成</h3>
+          <p>
+            この時点では、サイトがまだ完全に反映されていないことがあります。10 分から 1 時間ほど待ってから、自分のドメインまたは www サブドメインにアクセスすると、サイトが表示されるはずです。
+          </p>
+
+          <h2 id="finish">おわりに</h2>
+          <p>
+            これで、自分だけのブログをかなり気軽に作ることができます。今後は記事一覧、多言語構成、編集フローも少しずつ整えていく予定です。
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <button class="scroll-top-button" type="button" aria-label="Back to top"></button>
+
+    <footer class="site-footer" aria-label="Social and contact links">
+      <div class="footer-inner">
+        <p class="footer-label">Find me</p>
+        <div class="social-actions">
+          <a class="social-button" href="https://www.instagram.com/nyaro0116/" aria-label="Open Instagram profile">
+            <img src="../../assets/icon-ins.svg" alt="">
+          </a>
+          <a class="social-button" href="https://x.com/Nyaro_Momiji" aria-label="Open X profile">
+            <img src="../../assets/icon-x.svg" alt="">
+          </a>
+        </div>
+        <p class="email-text">nyaro.email@nyaro.org</p>
+      </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>

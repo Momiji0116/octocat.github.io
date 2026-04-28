@@ -73,6 +73,34 @@ if (title && localGreeting) {
 
 const articleToc = document.querySelector(".article-toc");
 const tocToggle = document.querySelector(".toc-toggle");
+const tocPanel = document.querySelector(".toc-panel");
+const tocDots = document.querySelector(".toc-dots");
+
+if (articleToc && tocPanel) {
+  const headings = document.querySelectorAll(".article-body h2[id], .article-body h3[id], .article-body h4[id]");
+
+  tocPanel.replaceChildren();
+
+  if (tocDots) {
+    tocDots.replaceChildren();
+  }
+
+  headings.forEach((heading) => {
+    const link = document.createElement("a");
+    const level = Number(heading.tagName.slice(1));
+
+    link.className = level === 2 ? "toc-item toc-item-large" : "toc-item toc-item-small";
+    link.href = `#${heading.id}`;
+    link.textContent = heading.textContent;
+    tocPanel.append(link);
+
+    if (tocDots) {
+      const dot = document.createElement("span");
+      dot.className = level === 2 ? "toc-dot toc-dot-large" : "toc-dot toc-dot-small";
+      tocDots.append(dot);
+    }
+  });
+}
 
 if (articleToc && tocToggle) {
   tocToggle.addEventListener("click", () => {

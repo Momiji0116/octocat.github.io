@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我使用 ChatGPT 5.5 搭建了这个博客 | Nyaro's Blog</title>
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="../index.html#home">
+        <span>Nyaro's Blog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#home">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../index.html#about">About</a>
+      </nav>
+      <details class="language-switcher">
+        <summary>Language</summary>
+        <div class="language-menu">
+          <a href="../../zh/posts/building-this-blog.html" aria-current="true">简体中文</a>
+          <a href="../../ja/posts/building-this-blog.html">日本語</a>
+          <a href="../../en/posts/building-this-blog.html">English</a>
+        </div>
+      </details>
+    </header>
+
+    <main>
+      <aside class="article-toc is-collapsed" aria-label="Article table of contents">
+        <button class="toc-toggle" type="button" aria-expanded="false" aria-label="Toggle article directory">
+          <span class="toc-label">Contents</span>
+          <span class="toc-dots" aria-hidden="true"></span>
+        </button>
+        <nav class="toc-panel" aria-label="Article sections"></nav>
+      </aside>
+
+      <article class="article-page">
+        <header class="article-header">
+          <a class="back-link" href="../blog.html">Back to Blog</a>
+          <p class="post-meta">事件 / 生活日常</p>
+          <h1>我使用 ChatGPT 5.5 搭建了这个博客</h1>
+          <p class="article-dek">
+            这是我的第一篇博客文章，记录我使用 ChatGPT 5.5 搭建这个博客的经历，以及一些有趣的细节。
+          </p>
+        </header>
+
+        <div class="article-body">
+          <p>
+            这是我用 ChatGPT 5.5 花了一天时间搭建出来的 Blog。这里是第一篇文章，我很高兴你能点进来看看。
+          </p>
+          <p>
+            使用到的工具有 ChatGPT 5.5、Codex、Cloudflare DNS、GitHub Pages。
+          </p>
+
+          <h2 id="cost">费用统计</h2>
+          <p>
+            Cloudflare 域名费用：第一年约 7.5 USD。
+          </p>
+
+          <h2 id="start">让我们开始吧</h2>
+
+          <h3 id="part-html">Part 1：使用 ChatGPT 生成 HTML 页面代码</h3>
+          <p>
+            我在这里使用的是 ChatGPT 5.5，并且让 Codex 直接生成主页、目录页和文章页模板。之后我根据自己的需求继续调整样式、交互和页面结构。给我的感觉是，这个模型真的很强。
+          </p>
+
+          <h3 id="part-domain">Part 2：购买 Cloudflare 域名</h3>
+          <p>
+            我这里使用的是 Cloudflare 的域名服务，也可以使用 Aliyun、Tencent、GoDaddy 等域名服务商。Cloudflare 相对来说比较便宜，我购买的顶级域名是 nyaro.org，第一年约 7.5 USD，第二年约 10 USD。
+          </p>
+
+          <h3 id="part-github-pages">Part 3：获取 GitHub Pages URL 并上传代码</h3>
+          <p>
+            GitHub Pages 已经有很完整的官方文档，所以这里不展开重复说明。可以参考：
+            <a href="https://docs.github.com/zh/pages/quickstart"><u>GitHub Pages 快速入门</u></a>
+          </p>
+
+          <h3 id="part-dns">Part 4：配置 DNS 设置</h3>
+          <p>
+            购买域名后，需要在 Cloudflare DNS 中添加 GitHub Pages 要求的 DNS 记录。GitHub Pages 通常会给出四条 A 记录和一条 CNAME 记录。
+          </p>
+
+          <h4 id="a-records">A 记录</h4>
+          <p>
+            将根域名指向 GitHub Pages 的 IP 地址：
+          </p>
+          <figure class="code-card">
+            <figcaption>Cloudflare DNS / A records</figcaption>
+            <pre><code>@  A  185.199.108.153
+@  A  185.199.109.153
+@  A  185.199.110.153
+@  A  185.199.111.153</code></pre>
+          </figure>
+
+          <h4 id="cname-record">CNAME 记录</h4>
+          <p>
+            将 www 子域名指向你的 GitHub Pages 地址，例如 username.github.io。
+          </p>
+          <figure class="code-card">
+            <figcaption>Cloudflare DNS / CNAME record</figcaption>
+            <pre><code>www  CNAME  username.github.io</code></pre>
+          </figure>
+          <p>
+            也可以参考 GitHub 官方文档：
+            <a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site"><u>配置 GitHub Pages 自定义域名</u></a>
+          </p>
+
+          <h3 id="part-custom-domain">Part 5：GitHub Pages 自定义域名</h3>
+          <p>
+            配置 DNS 后，还需要在 GitHub Pages 的设置中添加你的自定义域名。进入仓库的 Settings > Pages，在 Custom domain 中输入域名并等待验证。
+          </p>
+
+          <h3 id="part-done">Part 6：大功告成</h3>
+          <p>
+            这个时候网站可能还没有完全生效。等待 10 分钟到 1 小时后，再访问你的域名或 www 子域名，通常就可以看到网站了。
+          </p>
+
+          <h2 id="finish">结束</h2>
+          <p>
+            这样你就可以比较轻松地搭建一个属于自己的博客了。
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <button class="scroll-top-button" type="button" aria-label="Back to top"></button>
+
+    <footer class="site-footer" aria-label="Social and contact links">
+      <div class="footer-inner">
+        <p class="footer-label">Find me</p>
+        <div class="social-actions">
+          <a class="social-button" href="https://www.instagram.com/nyaro0116/" aria-label="Open Instagram profile">
+            <img src="../../assets/icon-ins.svg" alt="">
+          </a>
+          <a class="social-button" href="https://x.com/Nyaro_Momiji" aria-label="Open X profile">
+            <img src="../../assets/icon-x.svg" alt="">
+          </a>
+        </div>
+        <p class="email-text">nyaro.email@nyaro.org</p>
+      </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>

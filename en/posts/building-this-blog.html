@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Building this blog with ChatGPT 5.5 | Nyaro's Blog</title>
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="../index.html#home">
+        <span>Nyaro's Blog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#home">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../index.html#about">About</a>
+      </nav>
+      <details class="language-switcher">
+        <summary>Language</summary>
+        <div class="language-menu">
+          <a href="../../zh/posts/building-this-blog.html">简体中文</a>
+          <a href="../../ja/posts/building-this-blog.html">日本語</a>
+          <a href="../../en/posts/building-this-blog.html" aria-current="true">English</a>
+        </div>
+      </details>
+    </header>
+
+    <main>
+      <aside class="article-toc is-collapsed" aria-label="Article table of contents">
+        <button class="toc-toggle" type="button" aria-expanded="false" aria-label="Toggle article directory">
+          <span class="toc-label">Contents</span>
+          <span class="toc-dots" aria-hidden="true"></span>
+        </button>
+        <nav class="toc-panel" aria-label="Article sections"></nav>
+      </aside>
+
+      <article class="article-page">
+        <header class="article-header">
+          <a class="back-link" href="../blog.html">Back to Blog</a>
+          <p class="post-meta">Event / Daily Life</p>
+          <h1>Building this blog with ChatGPT 5.5</h1>
+          <p class="article-dek">
+            This is my first blog post, recording how I built this blog with ChatGPT 5.5 and a few details I found interesting along the way.
+          </p>
+        </header>
+
+        <div class="article-body">
+          <p>
+            I built this Blog in about a day with ChatGPT 5.5. This is the first article here, and I am glad you clicked in to read it.
+          </p>
+          <p>
+            The tools I used were ChatGPT 5.5, Codex, Cloudflare DNS, and GitHub Pages.
+          </p>
+
+          <h2 id="cost">Cost Notes</h2>
+          <p>
+            The Cloudflare domain cost was about 7.5 USD for the first year.
+          </p>
+
+          <h2 id="start">Let's Get Started</h2>
+
+          <h3 id="part-html">Part 1: Generate HTML pages with ChatGPT</h3>
+          <p>
+            I used ChatGPT 5.5 here and asked Codex to generate the home page, blog index, and article page templates directly. After that, I adjusted the styling, interactions, and page structure based on what I wanted. My honest impression is that this model is extremely strong.
+          </p>
+
+          <h3 id="part-domain">Part 2: Buy a domain on Cloudflare</h3>
+          <p>
+            I used Cloudflare's domain service for this site, but Aliyun, Tencent, GoDaddy, and other domain providers would also work. Cloudflare is relatively affordable. The top-level domain I bought is nyaro.org, which cost about 7.5 USD for the first year and about 10 USD for the second year.
+          </p>
+
+          <h3 id="part-github-pages">Part 3: Get your GitHub Pages URL and upload your code</h3>
+          <p>
+            GitHub Pages already has complete official documentation, so I will not repeat the full setup here. You can refer to:
+            <a href="https://docs.github.com/en/pages/quickstart"><u>GitHub Pages quickstart</u></a>
+          </p>
+
+          <h3 id="part-dns">Part 4: Configure DNS settings</h3>
+          <p>
+            After buying the domain, you need to add the DNS records required by GitHub Pages in Cloudflare DNS. GitHub Pages usually requires four A records and one CNAME record.
+          </p>
+
+          <h4 id="a-records">A records</h4>
+          <p>
+            Point the root domain to the GitHub Pages IP addresses:
+          </p>
+          <figure class="code-card">
+            <figcaption>Cloudflare DNS / A records</figcaption>
+            <pre><code>@  A  185.199.108.153
+@  A  185.199.109.153
+@  A  185.199.110.153
+@  A  185.199.111.153</code></pre>
+          </figure>
+
+          <h4 id="cname-record">CNAME record</h4>
+          <p>
+            Point the www subdomain to your GitHub Pages address, such as username.github.io.
+          </p>
+          <figure class="code-card">
+            <figcaption>Cloudflare DNS / CNAME record</figcaption>
+            <pre><code>www  CNAME  username.github.io</code></pre>
+          </figure>
+          <p>
+            You can also refer to the official GitHub documentation:
+            <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site"><u>Configuring a custom domain for GitHub Pages</u></a>
+          </p>
+
+          <h3 id="part-custom-domain">Part 5: Add the custom domain in GitHub Pages</h3>
+          <p>
+            After configuring DNS, you also need to add your custom domain in GitHub Pages settings. Open Settings > Pages in the repository, enter the domain under Custom domain, and wait for verification.
+          </p>
+
+          <h3 id="part-done">Part 6: Done</h3>
+          <p>
+            At this point, the site may not be fully active yet. Wait about 10 minutes to an hour, then visit your domain or www subdomain. In most cases, the site should appear.
+          </p>
+
+          <h2 id="finish">Closing</h2>
+          <p>
+            With this setup, you can build your own blog fairly easily. Next, I plan to keep refining the article index, multilingual structure, and editing workflow.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <button class="scroll-top-button" type="button" aria-label="Back to top"></button>
+
+    <footer class="site-footer" aria-label="Social and contact links">
+      <div class="footer-inner">
+        <p class="footer-label">Find me</p>
+        <div class="social-actions">
+          <a class="social-button" href="https://www.instagram.com/nyaro0116/" aria-label="Open Instagram profile">
+            <img src="../../assets/icon-ins.svg" alt="">
+          </a>
+          <a class="social-button" href="https://x.com/Nyaro_Momiji" aria-label="Open X profile">
+            <img src="../../assets/icon-x.svg" alt="">
+          </a>
+        </div>
+        <p class="email-text">nyaro.email@nyaro.org</p>
+      </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>
