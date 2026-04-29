@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>このブログで作ってきたこと | Nyaro's Blog</title>
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="../index.html#home">
+        <span>Nyaro's Blog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#home">Home</a>
+        <a href="../index.html#about">About</a>
+        <a href="../blog.html">Blog</a>
+      </nav>
+      <details class="language-switcher">
+        <summary>Language</summary>
+        <div class="language-menu">
+          <a href="../../zh/posts/what-we-built.html">简体中文</a>
+          <a href="../../ja/posts/what-we-built.html" aria-current="true">日本語</a>
+          <a href="../../en/posts/what-we-built.html">English</a>
+        </div>
+      </details>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <main>
+      <aside class="article-toc is-collapsed" aria-label="Article table of contents">
+        <button class="toc-toggle" type="button" aria-expanded="false" aria-label="Toggle article directory">
+          <span class="toc-label">Contents</span>
+          <span class="toc-dots" aria-hidden="true"></span>
+        </button>
+        <nav class="toc-panel" aria-label="Article sections"></nav>
+      </aside>
+
+      <article class="article-page">
+        <header class="article-header">
+          <a class="back-link" href="../blog.html">Back to Blog</a>
+          <p class="post-meta">Project Log</p>
+          <h1>このブログで作ってきたこと</h1>
+          <p class="article-dek">
+            このサイトを最初からここまで整えてきた流れを、短く記録しておきます。
+          </p>
+        </header>
+
+        <div class="article-body">
+          <p>
+            最初は、シンプルな個人ページから始まりました。まずホーム画面を作り、多言語のあいさつが浮かぶ表現を残しながら、小さい画面でも崩れにくいように調整しました。
+          </p>
+          <h2 id="pages">ページと構成</h2>
+          <p>
+            次に Blog を入口として追加し、記事一覧と記事ページのテンプレートを作りました。ナビゲーションと Find me の欄を残しつつ、root、中文、日本語、English の各ディレクトリも整理しました。
+          </p>
+          <h2 id="reading">読むための調整</h2>
+          <p>
+            記事ページでは、左側の目次、折りたたみ、トップへ戻るボタン、アンカー位置の調整を入れました。本文の位置も見直して、読みやすい中央寄せに戻しました。
+          </p>
+          <h2 id="style">細かな仕上げ</h2>
+          <p>
+            最後に、ガラス風の質感、言語メニュー、SNS アイコン、GitHub リンク、ダークモード、コードブロック、細かなアニメーションを整えました。大きな一歩というより、小さな調整の積み重ねで形になったブログです。
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <button class="scroll-top-button" type="button" aria-label="Back to top"></button>
+
+    <footer class="site-footer" aria-label="Social and contact links">
+      <div class="footer-inner">
+        <p class="footer-label">Find me</p>
+        <div class="social-actions">
+          <a class="social-button" href="https://www.instagram.com/nyaro0116/" aria-label="Open Instagram profile">
+            <img src="../../assets/icon-ins.svg" alt="">
+          </a>
+          <a class="social-button" href="https://x.com/Nyaro_Momiji" aria-label="Open X profile">
+            <img src="../../assets/icon-x.svg" alt="">
+          </a>
+          <a class="social-button" href="https://github.com/Momiji0116" aria-label="Open GitHub profile">
+            <svg class="social-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd" d="M32 12.5c-11.05 0-20 8.95-20 20 0 8.84 5.73 16.33 13.68 18.98 1 .18 1.37-.43 1.37-.96 0-.47-.02-2.04-.03-3.71-5.56 1.21-6.73-2.36-6.73-2.36-.91-2.31-2.22-2.93-2.22-2.93-1.81-1.24.14-1.21.14-1.21 2 .14 3.05 2.05 3.05 2.05 1.78 3.05 4.67 2.17 5.8 1.66.18-1.29.7-2.17 1.27-2.67-4.44-.5-9.1-2.22-9.1-9.88 0-2.18.78-3.97 2.05-5.37-.2-.5-.89-2.54.2-5.3 0 0 1.67-.54 5.5 2.05A19.08 19.08 0 0 1 32 22.18c1.7.01 3.42.23 5.02.67 3.82-2.59 5.48-2.05 5.48-2.05 1.1 2.76.41 4.8.2 5.3a7.73 7.73 0 0 1 2.05 5.37c0 7.68-4.68 9.37-9.13 9.87.72.62 1.36 1.84 1.36 3.7 0 2.67-.02 4.83-.02 5.48 0 .53.36 1.15 1.38.96A20.01 20.01 0 0 0 52 32.5c0-11.05-8.95-20-20-20Z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+        <p class="email-text">nyaro.email@nyaro.org</p>
+      </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>

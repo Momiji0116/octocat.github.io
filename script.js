@@ -71,10 +71,34 @@ if (title && localGreeting) {
   title.dataset.size = greeting.length > 6 ? "long" : greeting.length > 3 ? "medium" : "short";
 }
 
+const themeToggle = document.querySelector(".theme-toggle");
+
+if (themeToggle) {
+  const storedTheme = localStorage.getItem("nyaro-theme") || localStorage.getItem("nyaro-home-theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const useDarkTheme = storedTheme ? storedTheme === "dark" : prefersDark;
+
+  function setHomeTheme(isDark) {
+    document.body.classList.toggle("theme-dark", isDark);
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+  }
+
+  setHomeTheme(useDarkTheme);
+
+  themeToggle.addEventListener("click", () => {
+    const isDark = !document.body.classList.contains("theme-dark");
+    setHomeTheme(isDark);
+    localStorage.setItem("nyaro-theme", isDark ? "dark" : "light");
+  });
+}
+
 const articleToc = document.querySelector(".article-toc");
 const tocToggle = document.querySelector(".toc-toggle");
 const tocPanel = document.querySelector(".toc-panel");
 const tocDots = document.querySelector(".toc-dots");
+let articleHeadings = [];
+let tocLinks = [];
 
 if (articleToc && tocPanel) {
   const headings = document.querySelectorAll(".article-body h2[id], .article-body h3[id], .article-body h4[id]");
@@ -85,14 +109,19 @@ if (articleToc && tocPanel) {
     tocDots.replaceChildren();
   }
 
-  headings.forEach((heading) => {
+  articleHeadings = Array.from(headings);
+  tocLinks = [];
+
+  articleHeadings.forEach((heading) => {
     const link = document.createElement("a");
     const level = Number(heading.tagName.slice(1));
 
     link.className = level === 2 ? "toc-item toc-item-large" : "toc-item toc-item-small";
     link.href = `#${heading.id}`;
     link.textContent = heading.textContent;
+    link.dataset.target = heading.id;
     tocPanel.append(link);
+    tocLinks.push(link);
 
     if (tocDots) {
       const dot = document.createElement("span");
@@ -100,6 +129,22 @@ if (articleToc && tocPanel) {
       tocDots.append(dot);
     }
   });
+}
+
+function updateArticleReadingState() {
+  if (articleHeadings.length && tocLinks.length) {
+    let activeHeading = articleHeadings[0];
+
+    articleHeadings.forEach((heading) => {
+      if (heading.getBoundingClientRect().top <= 150) {
+        activeHeading = heading;
+      }
+    });
+
+    tocLinks.forEach((link) => {
+      link.classList.toggle("is-active", link.dataset.target === activeHeading.id);
+    });
+  }
 }
 
 if (articleToc && tocToggle) {
@@ -125,4 +170,10 @@ if (scrollTopButton) {
 
   updateScrollTopButton();
   window.addEventListener("scroll", updateScrollTopButton, { passive: true });
+}
+
+if (articleToc) {
+  updateArticleReadingState();
+  window.addEventListener("scroll", updateArticleReadingState, { passive: true });
+  window.addEventListener("resize", updateArticleReadingState);
 }
